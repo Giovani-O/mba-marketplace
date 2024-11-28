@@ -3,19 +3,77 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Orange */
+  --orange-base: #f24d0d;
+  --orange-dark: #c43c08;
+
+  /* Blue */
+  --blue-light: #d7eff9;
+  --blue-base: #5ec5fd;
+  --blue-dark: #009cf0;
+
+  /* Shape */
+  --white: #ffffff;
+  --background: #fbf4f4;
+  --shape: #f5eaea;
+
+  /* Grayscale */
+  --gray-100: #adadad;
+  --gray-200: #949494;
+  --gray-300: #666666;
+  --gray-400: #3d3d3d;
+  --gray-500: #1d1d1d;
+
+  /* Semantic */
+  --danger: #dc3545;
+  --success: #28a745;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --orange-base: #f24d0d;
+    --orange-dark: #c43c08;
+
+    /* Blue */
+    --blue-light: #d7eff9;
+    --blue-base: #5ec5fd;
+    --blue-dark: #009cf0;
+
+    /* Shape */
+    --white: #ffffff;
+    --background: #fbf4f4;
+    --shape: #f5eaea;
+
+    /* Grayscale */
+    --gray-100: #adadad;
+    --gray-200: #949494;
+    --gray-300: #666666;
+    --gray-400: #3d3d3d;
+    --gray-500: #1d1d1d;
+
+    /* Semantic */
+    --danger: #dc3545;
+    --success: #28a745;
   }
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Poppins', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'DM Sans', sans-serif;
 }
