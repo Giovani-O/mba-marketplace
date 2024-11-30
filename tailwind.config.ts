@@ -12,6 +12,28 @@ export default {
         body: ['Poppins', 'sans-serif'],
         heading: ['DM Sans', 'sans-serif'],
       },
+      fontSize: {
+        'title-lg': ['28px', { lineHeight: '120%' }],
+        'title-md': ['24px', { lineHeight: '120%' }],
+        'title-sm': ['18px', { lineHeight: '120%' }],
+        subtitle: ['16px', { lineHeight: '120%' }],
+        'body-md': ['16px', { lineHeight: '120%' }],
+        'body-sm': ['14px', { lineHeight: '120%' }],
+        'body-xs': ['12px', { lineHeight: '120%' }],
+        'label-md': ['12px', { lineHeight: '120%' }],
+        'label-sm': ['10px', { lineHeight: '120%' }],
+        'action-md': ['16px', { lineHeight: '120%' }],
+        'action-sm': ['14px', { lineHeight: '120%' }],
+      },
+      fontWeight: {
+        semibold: '600',
+        medium: '500',
+        regular: '400',
+        bold: '700',
+      },
+      textTransform: {
+        uppercase: 'uppercase',
+      },
       colors: {
         orange: {
           base: 'var(--orange-base)',

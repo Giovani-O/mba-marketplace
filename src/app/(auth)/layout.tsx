@@ -33,7 +33,7 @@ export default function AuthLayout({
         </div>
       </section>
 
-      <section className={'col-span-4 m-6 bg-orange-base rounded-[32px]'}>
+      <section className={'col-span-4 m-6 bg-shape-white rounded-[32px]'}>
         {children}
       </section>
     </section>
