@@ -1,23 +1,51 @@
 'use client'
 
 import BaseInput from '@/components/base-input'
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, FormEvent, useState } from 'react'
 
 export default function SignIn() {
   const [email, setEmail] = useState('')
+  const [emailError, setEmailError] = useState('')
   const [password, setPassword] = useState('')
+  const [passwordError, setPasswordError] = useState('')
 
   function handleChangeEmail(e: ChangeEvent<HTMLInputElement>) {
-    setEmail(e.target.value)
+    const value = e.target.value
+
+    setEmailError('')
+    setEmail(value)
   }
 
   function handleChangePassword(e: ChangeEvent<HTMLInputElement>) {
-    setPassword(e.target.value)
+    const value = e.target.value
+
+    setPasswordError('')
+    setPassword(value)
+  }
+
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+
+    if (!email.includes('@') || email.length === 0) {
+      setEmailError('Informe um e-mail válido')
+    }
+
+    if (password.length === 0) {
+      setPasswordError('Informe sua senha')
+    }
+
+    if (emailError || passwordError) {
+      return
+    }
   }
 
   return (
     <section className="py-[72px] px-20 h-full flex flex-col justify-between">
-      <form className="flex flex-col gap-12">
+      <form
+        className="flex flex-col gap-12"
+        id="sign-in-form"
+        onSubmit={handleSubmit}
+      >
         <div className="flex flex-col gap-2">
           <h1 className="text-title-md font-bold">Acesse sua conta</h1>
           <p className=" font-body text-body-sm font-thin text-gray-300">
@@ -25,7 +53,7 @@ export default function SignIn() {
           </p>
         </div>
 
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-1">
           <BaseInput
             type="text"
             placeholder="Seu e-mail cadastrado"
@@ -33,6 +61,8 @@ export default function SignIn() {
             value={email}
             onChange={handleChangeEmail}
             icon="mail"
+            error={emailError}
+            required
           />
           <BaseInput
             type="password"
@@ -41,11 +71,15 @@ export default function SignIn() {
             value={password}
             onChange={handleChangePassword}
             icon="password"
+            error={passwordError}
+            required
           />
         </div>
       </form>
 
-      <button>Cadastrar</button>
+      <button type="submit" form="sign-in-form">
+        Cadastrar
+      </button>
     </section>
   )
 }
