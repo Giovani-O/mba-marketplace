@@ -19,16 +19,18 @@ export default function AuthLayout({
             src="/logo.svg"
             alt="Logo do marketplace"
             width={268}
-            height={0}
+            height={69}
+            priority
           />
         </div>
         <div className="m-auto">
           <Image
             src="/background.png"
             alt="Logo do marketplace"
-            style={{ width: '100%' }}
+            style={{ width: '100%', height: 'auto' }}
             width={1200}
             height={0}
+            priority
           />
         </div>
       </section>
