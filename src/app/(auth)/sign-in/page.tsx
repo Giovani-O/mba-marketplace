@@ -1,6 +1,8 @@
 'use client'
 
+import BaseButton from '@/components/base-button'
 import BaseInput from '@/components/base-input'
+import { ArrowRight01Icon } from 'hugeicons-react'
 import { ChangeEvent, FormEvent, useState } from 'react'
 
 export default function SignIn() {
@@ -75,11 +77,23 @@ export default function SignIn() {
             required
           />
         </div>
+        <BaseButton
+          type="submit"
+          text="Acessar"
+          iconRight={<ArrowRight01Icon />}
+        />
       </form>
 
-      <button type="submit" form="sign-in-form">
-        Cadastrar
-      </button>
+      <div className="w-full flex flex-col gap-5">
+        <p className="font-body text-body-md font-regular text-gray-300">
+          Ainda não tem uma conta?
+        </p>
+        <BaseButton
+          text="Cadastrar"
+          variant="secondary"
+          iconRight={<ArrowRight01Icon />}
+        />
+      </div>
     </section>
   )
 }
