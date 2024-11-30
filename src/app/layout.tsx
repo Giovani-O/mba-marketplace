@@ -27,8 +27,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt">
-      <body className={`${poppins.className}`}>
-        <div className={`${dm_sans.className}`}>{children}</div>
+      <body className={`${poppins.className} bg-shape-background`}>
+        <main className={`${dm_sans.className}`}>{children}</main>
       </body>
     </html>
   )
