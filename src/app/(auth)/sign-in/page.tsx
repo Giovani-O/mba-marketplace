@@ -4,6 +4,14 @@ import BaseButton from '@/components/base-button'
 import BaseInput from '@/components/base-input'
 import { ArrowRight01Icon } from 'hugeicons-react'
 import { ChangeEvent, FormEvent, useState } from 'react'
+import { z } from 'zod'
+
+const formSchema = z.object({
+  email: z.string().email({ message: 'Informe um e-mail válido' }),
+  password: z
+    .string()
+    .min(4, { message: 'A senha deve conter ao menos 4 caracteres' }),
+})
 
 export default function SignIn() {
   const [email, setEmail] = useState('')
@@ -28,16 +36,17 @@ export default function SignIn() {
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
 
-    if (!email.includes('@') || email.length === 0) {
-      setEmailError('Informe um e-mail válido')
-    }
+    const form = { email, password }
+    const result = formSchema.safeParse(form)
 
-    if (password.length === 0) {
-      setPasswordError('Informe sua senha')
-    }
-
-    if (emailError || passwordError) {
-      return
+    if (!result.success && result.error.errors.length > 0) {
+      result.error.errors.forEach((error) => {
+        if (error.path.includes('email')) {
+          setEmailError(error.message)
+        } else if (error.path.includes('password')) {
+          setPasswordError(error.message)
+        }
+      })
     }
   }
 
@@ -81,6 +90,7 @@ export default function SignIn() {
           type="submit"
           text="Acessar"
           iconRight={<ArrowRight01Icon />}
+          disabled={!!emailError || !!passwordError}
         />
       </form>
 
